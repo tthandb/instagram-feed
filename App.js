@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   empty: { width: 27, marginLeft: 10 },
   container: {
     flexDirection: "row",
-    backgroundColor: "pink",
+    backgroundColor: "#f3f6fa",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -115,10 +115,11 @@ const styles = StyleSheet.create({
   likesWrapper: {
     //    marginHorizontal: 12,
     flexDirection: "row",
-    borderTopColor: "grey",
+    borderTopColor: "#e4e3e5",
     borderTopWidth: 1,
-    borderBottomColor: "grey",
+    borderBottomColor: "#e4e3e5",
     borderBottomWidth: 1,
+    borderRadius:3,
     alignItems: "center",
   },
   reactionButton: {
