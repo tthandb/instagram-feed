@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 export default function App() {
   return (
     <View>
@@ -11,10 +11,9 @@ export default function App() {
           style={styles.logo}
           resizeMode="contain"
         />
-        <AntDesign name="inbox" size={24} color="black" />
+        <Feather name="inbox" size={24} color="black" />
       </SafeAreaView>
       {singlePost(feedData[0])}
-      {singlePost(feedData[1])}
       {singlePost(feedData[2])}
     </View>
   );
@@ -27,6 +26,39 @@ const singlePost = (feed) => {
         <Text>{feed.name}</Text>
       </View>
       <Image source={feed.image} style={styles.postImage} resizeMode="cover" />
+      <View style={styles.reactWrapper}>
+        <Feather
+          name="heart"
+          size={24}
+          color="black"
+          style={styles.reactionButton}
+          onPress={() => alert("like")}
+        />
+        <Feather
+          name="message-square"
+          size={24}
+          color="black"
+          style={styles.reactionButton}
+          onPress={() => alert("comment")}
+        />
+        <Feather
+          name="share"
+          size={24}
+          color="black"
+          style={styles.reactionButton}
+          onPress={() => alert("share")}
+        />
+      </View>
+      <View style={styles.likesWrapper}>
+        <Feather
+          name="heart"
+          size={24}
+          color="black"
+          style={styles.reactionButton}
+          onPress={() => alert("like")}
+        />
+        <Text>{feed.likeCount} likes</Text>
+      </View>
     </View>
   );
 };
@@ -45,7 +77,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   singlePost: {
-    height: 300,
+    height: 400,
   },
   avatarWrapper: {
     flexDirection: "row",
@@ -66,6 +98,22 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 15,
     fontWeight: "500",
+  },
+  reactWrapper: {
+    flexDirection: "row",
+    //marginHorizontal: 12,
+  },
+  likesWrapper: {
+    //    marginHorizontal: 12,
+    flexDirection: "row",
+    borderTopColor: "grey",
+    borderTopWidth: 1,
+    borderBottomColor: "grey",
+    borderBottomWidth: 1,
+    alignItems: "center",
+  },
+  reactionButton: {
+    marginHorizontal: 10,
   },
 });
 const feedData = [
