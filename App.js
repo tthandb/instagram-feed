@@ -11,10 +11,16 @@ export default function App() {
           style={styles.logo}
           resizeMode="contain"
         />
-        <Feather name="inbox" size={24} color="black" />
+        <Feather
+          name="inbox"
+          size={24}
+          color="black"
+          style={{ marginRight: 10 }}
+        />
       </SafeAreaView>
-      {singlePost(feedData[0])}
-      {singlePost(feedData[2])}
+      {feedData.map((feed) => {
+        return singlePost(feed);
+      })}
     </View>
   );
 }
@@ -23,7 +29,7 @@ const singlePost = (feed) => {
     <View style={styles.singlePost} key={feed.id}>
       <View style={styles.avatarWrapper}>
         <Image source={feed.avatar} style={styles.avatar} resizeMode="cover" />
-        <Text>{feed.name}</Text>
+        <Text style={styles.name}>{feed.name}</Text>
       </View>
       <Image source={feed.image} style={styles.postImage} resizeMode="cover" />
       <View style={styles.reactWrapper}>
@@ -64,7 +70,7 @@ const singlePost = (feed) => {
 };
 
 const styles = StyleSheet.create({
-  empty: { width: 27 },
+  empty: { width: 27, marginLeft: 10 },
   container: {
     flexDirection: "row",
     backgroundColor: "pink",
@@ -77,6 +83,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   singlePost: {
+    marginTop: 10,
     height: 400,
   },
   avatarWrapper: {
@@ -97,11 +104,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 15,
-    fontWeight: "500",
+    fontWeight: "bold",
   },
   reactWrapper: {
     flexDirection: "row",
     //marginHorizontal: 12,
+    marginTop: 5,
+    marginBottom: 5,
   },
   likesWrapper: {
     //    marginHorizontal: 12,
